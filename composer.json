@@ -2,7 +2,6 @@
     "name": "defstudio/laravel-clog-detector",
     "description": "A slow response time detector for Laravel",
     "keywords": [
-        "def:studio",
         "defstudio",
         "def-studio",
         "laravel",
