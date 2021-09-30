@@ -13,7 +13,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function register()
     {
-        $this->app->bind(Kernel::class);
+        $this->app->bind(Kernel::class, \DefStudio\ClogDetector\Http\Kernel::class);
     }
 
 }
