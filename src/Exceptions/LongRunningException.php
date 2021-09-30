@@ -13,8 +13,10 @@ use Exception;
 
 class LongRunningException extends Exception
 {
-    public static function tookLongerThanAllowed(float $elapsed_seconds, float $allowed_seconds): LongRunningException
+    public static function httpRequestTookLongerThanAllowed(float $elapsedSeconds, float $allowedSeconds): LongRunningException
     {
-        return new self("Http request handling took $elapsed_seconds seconds, max time was $allowed_seconds seconds");
+        $elapsedSeconds = round($elapsedSeconds, 2);
+        $allowedSeconds = round($allowedSeconds, 2);
+        return new self("Last request took $elapsedSeconds seconds, max time was $allowedSeconds seconds");
     }
 }

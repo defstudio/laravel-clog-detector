@@ -5,22 +5,31 @@
  *  Authors: Fabio Ivona <fabio.ivona@defstudio.it> & Daniele Romeo <danieleromeo@defstudio.it>
  */
 
+/** @noinspection PhpMissingParamTypeInspection */
+
 namespace DefStudio\ClogDetector\Middleware;
 
 use Closure;
 use DefStudio\ClogDetector\Exceptions\LongRunningException;
+use URL;
 
 class MeasureHttpResponseTime
 {
+    /**
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     *
+     * @return mixed
+     */
     public function handle($request, Closure $next): mixed
     {
 
 
         $start = app('request')->server('REQUEST_TIME_FLOAT');
         $response = $next($request);
-        $execution_time = microtime(true) - $start;
+        $executionTime = microtime(true) - $start;
 
-        if (empty($max_allowed_seconds = config('clog-detector.max_http_seconds'))) {
+        if (empty($maxAllowedSeconds = config('clog-detector.max_http_seconds'))) {
             return $response;
         }
 
@@ -28,8 +37,12 @@ class MeasureHttpResponseTime
             return $response;
         }
 
-        if ($execution_time > $max_allowed_seconds) {
-            report(LongRunningException::tookLongerThanAllowed($execution_time, $max_allowed_seconds));
+        if (in_array(URL::current(), config('clog-detector.ignored_urls', []))) {
+            return $response;
+        }
+
+        if ($executionTime > $maxAllowedSeconds) {
+            report(LongRunningException::httpRequestTookLongerThanAllowed($executionTime, $maxAllowedSeconds));
         }
 
         return $response;
