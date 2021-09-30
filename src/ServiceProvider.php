@@ -14,4 +14,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 
     }
 
+    public function boot()
+    {
+        $this->mergeConfigFrom(__DIR__."/../config/clog-detector.php", 'clog-detector');
+
+        $this->publishes([
+            __DIR__."/../config/clog-detector.php" => config_path('clog-detector.php'),
+        ], 'config');
+    }
 }
