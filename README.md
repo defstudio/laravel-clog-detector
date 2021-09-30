@@ -5,6 +5,7 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/def-studio/laravel-clog-detector/Check%20&%20fix%20styling?label=code%20style)](https://github.com/def-studio/laravel-clog-detector/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/defstudio/laravel-clog-detector.svg?style=flat-square)](https://packagist.org/packages/defstudio/laravel-clog-detector)
 
+
 A slow responses detector for Laravel.
 
 ## Installation
