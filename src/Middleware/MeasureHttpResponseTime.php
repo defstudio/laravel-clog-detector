@@ -14,7 +14,7 @@ class MeasureHttpResponseTime
 {
     public function handle($request, Closure $next): mixed
     {
-        $start = microtime(true);
+        $start = app('request')->server('REQUEST_TIME_FLOAT');
 
         $response = $next($request);
 
