@@ -15,13 +15,13 @@ class MeasureHttpResponseTime
     public function handle($request, Closure $next): mixed
     {
         $start = app('request')->server('REQUEST_TIME_FLOAT');
-
         $response = $next($request);
-
         $execution_time = microtime(true) - $start;
 
-        if ($execution_time > 1) {
-            report(LongRunningException::tookLongerThanAllowed($execution_time, 1));
+        $max_allowed_secodns = config('clog-detector.max_http_seconds');
+
+        if ($execution_time > $max_allowed_secodns) {
+            report(LongRunningException::tookLongerThanAllowed($execution_time, $max_allowed_secodns));
         }
 
         return $response;
