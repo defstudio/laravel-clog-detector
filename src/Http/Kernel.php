@@ -10,7 +10,7 @@ namespace DefStudio\ClogDetector\Http;
 use DefStudio\ClogDetector\Exceptions\LongRunningException;
 use Symfony\Component\HttpFoundation\Response;
 
-class Kernel extends \Illuminate\Foundation\Http\Kernel
+class Kernel extends \App\Http\Kernel
 {
     public function handle($request): \Illuminate\Http\Response|Response
     {
