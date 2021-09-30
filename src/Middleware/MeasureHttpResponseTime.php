@@ -5,17 +5,19 @@
  *  Authors: Fabio Ivona <fabio.ivona@defstudio.it> & Daniele Romeo <danieleromeo@defstudio.it>
  */
 
-namespace DefStudio\ClogDetector\Http;
+namespace DefStudio\ClogDetector\Middleware;
 
+use Closure;
 use DefStudio\ClogDetector\Exceptions\LongRunningException;
-use Symfony\Component\HttpFoundation\Response;
 
-class Kernel extends \App\Http\Kernel
+class MeasureHttpResponseTime
 {
-    public function handle($request): \Illuminate\Http\Response|Response
+    public function handle($request, Closure $next): mixed
     {
         $start = microtime(true);
-        $response = parent::handle($request);
+
+        $response = $next($request);
+
         $execution_time = microtime(true) - $start;
 
         if ($execution_time > 1) {
@@ -24,5 +26,4 @@ class Kernel extends \App\Http\Kernel
 
         return $response;
     }
-
 }

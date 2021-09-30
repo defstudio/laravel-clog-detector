@@ -7,6 +7,9 @@
 
 namespace DefStudio\ClogDetector;
 
+use DefStudio\ClogDetector\Middleware\MeasureHttpResponseTime;
+use Illuminate\Contracts\Http\Kernel;
+
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     public function register()
@@ -21,5 +24,13 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->publishes([
             __DIR__."/../config/clog-detector.php" => config_path('clog-detector.php'),
         ], 'config');
+
+        $this->registerMiddleware(MeasureHttpResponseTime::class);
+    }
+
+    protected function registerMiddleware(string $middleware)
+    {
+        $kernel = $this->app[Kernel::class];
+        $kernel->pushMiddleware($middleware);
     }
 }
