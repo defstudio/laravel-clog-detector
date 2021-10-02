@@ -25,7 +25,9 @@ class ClogDetectorServiceProvider extends PackageServiceProvider
             ->name('laravel-clog-detector')
             ->hasConfigFile();
 
-        $this->registerMiddleware(MeasureHttpResponseTime::class);
+        if (config('clog-detector.slow_responses.report') == true) {
+            $this->registerMiddleware(MeasureHttpResponseTime::class);
+        }
     }
 
     protected function registerMiddleware(string $middleware): void

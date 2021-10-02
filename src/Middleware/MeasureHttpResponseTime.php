@@ -8,12 +8,13 @@ namespace DefStudio\ClogDetector\Middleware;
 
 use Closure;
 use DefStudio\ClogDetector\Exceptions\LongRunningException;
+use Illuminate\Http\Request;
 use URL;
 
 class MeasureHttpResponseTime
 {
     /**
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      */
     public function handle($request, Closure $next): mixed
     {
@@ -21,7 +22,7 @@ class MeasureHttpResponseTime
         $response = $next($request);
         $executionTime = microtime(true) - $start;
 
-        $maxAllowedSeconds = config('clog-detector.max_http_seconds', 0);
+        $maxAllowedSeconds = config('clog-detector.slow_responses.max_allowed_seconds') ?? 0;
         if ($maxAllowedSeconds === 0) {
             return $response;
         }
