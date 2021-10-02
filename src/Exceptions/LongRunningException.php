@@ -1,4 +1,5 @@
 <?php
+
 /** @noinspection PhpPureAttributeCanBeAddedInspection */
 
 declare(strict_types=1);
@@ -13,6 +14,7 @@ class LongRunningException extends Exception
     {
         $elapsedSeconds = round($elapsedSeconds, 2);
         $allowedSeconds = round($allowedSeconds, 2);
+
         return new self("Last request took $elapsedSeconds seconds, max time was $allowedSeconds seconds");
     }
 }
