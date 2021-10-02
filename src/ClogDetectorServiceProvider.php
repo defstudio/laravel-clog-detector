@@ -1,6 +1,8 @@
 <?php
 /** @noinspection PhpUnused */
 
+declare(strict_types=1);
+
 namespace DefStudio\ClogDetector;
 
 use DefStudio\ClogDetector\Middleware\MeasureHttpResponseTime;
