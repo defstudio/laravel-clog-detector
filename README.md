@@ -1,8 +1,8 @@
 # Laravel Clog Detector
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/defstudio/laravel-clog-detector.svg?style=flat-square)](https://packagist.org/packages/defstudio/laravel-clog-detector)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/def-studio/laravel-clog-detector/run-tests?label=tests)](https://github.com/def-studio/laravel-clog-detector/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/def-studio/laravel-clog-detector/Check%20&%20fix%20styling?label=code%20style)](https://github.com/def-studio/laravel-clog-detector/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/def-studio/laravel-clog-detector/Run%20Tests?label=tests)](https://github.com/def-studio/laravel-clog-detector/actions?query=workflow%3A"Run+Tests"+branch%3Amain)
+[![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/def-studio/laravel-clog-detector/Static%20Analysis?label=code%20style)](https://github.com/def-studio/laravel-clog-detector/actions?query=workflow%3A"Static+Analysis"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/defstudio/laravel-clog-detector.svg?style=flat-square)](https://packagist.org/packages/defstudio/laravel-clog-detector)
 [![License](https://img.shields.io/packagist/l/defstudio/laravel-clog-detector)](https://packagist.org/packages/defstudio/laravel-clog-detector)
 
