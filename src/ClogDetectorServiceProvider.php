@@ -1,5 +1,7 @@
 <?php
-/** @noinspection PhpUnused */
+
+/* @noinspection PhpUnhandledExceptionInspection */
+/* @noinspection PhpUnused */
 
 declare(strict_types=1);
 
@@ -26,9 +28,9 @@ class ClogDetectorServiceProvider extends PackageServiceProvider
         $this->registerMiddleware(MeasureHttpResponseTime::class);
     }
 
-    protected function registerMiddleware(string $middleware)
+    protected function registerMiddleware(string $middleware): void
     {
-        $kernel = $this->app[Kernel::class];
+        $kernel = $this->app->make(Kernel::class);
         $kernel->pushMiddleware($middleware);
     }
 }
