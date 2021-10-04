@@ -52,7 +52,7 @@ class ClogDetectorServiceProvider extends PackageServiceProvider
         $this->registerMiddleware($contract);
 
         if (config('clog-detector.slow_responses.report') == true) {
-            $this->app->make($contract)->enable();
+            $this->app->make($contract)->enabled(true);
         }
     }
 }
